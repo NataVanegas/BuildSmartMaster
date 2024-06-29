@@ -1,0 +1,14 @@
+<!-- templates/tools/tool_category_create.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Crear Nueva Categoría - ConstrucPlan{% endblock %}
+
+{% block content %}
+<h1>Crear Nueva Categoría</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+</form>
+{% endblock %}

@@ -1,0 +1,14 @@
+<!-- tools/tool_category_detail.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Material Category Detail</title>
+</head>
+<body>
+    <h1>{{ category.name }}</h1>
+    <p>{{ category.description }}</p>
+    <a href="{% url 'tools:tool_category_list' %}">Back to Categories</a>
+</body>
+</html>

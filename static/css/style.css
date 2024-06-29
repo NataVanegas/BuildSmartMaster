@@ -1,0 +1,120 @@
+/* Reset de estilos para asegurar consistencia en navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos para el cuerpo del documento */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8e0c2;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Establece el alto mínimo del cuerpo al 100% del viewport */
+}
+
+/* Estilos para el encabezado (header) */
+header {
+    background-color: #333;
+    width: 100%; /* Asegura que el header ocupe todo el ancho */
+}
+
+header nav {
+    background-color: #333;
+    position: absolute;
+    width: 100%; /* Asegura que el nav ocupe todo el ancho del header */
+    
+}
+
+header nav ul {
+    list-style-type: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+    
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+header nav ul li a:hover {
+    color: #ffc107;
+}
+
+/* Estilos para el contenido principal (main) */
+main {
+    flex: 1; /* Expande el contenido principal para llenar el espacio disponible */
+}
+
+/* Estilos para el pie de página (footer) */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    flex-shrink: 0; /* Evita que el footer se encoja */
+}
+
+/* Estilos para los enlaces de navegación */
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #ffc107;
+}
+
+.card-material {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.card {
+    width: 18rem;
+    height: 30rem; /* Altura fija para todas las cards */
+    border: 2px solid;
+    border-radius: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-img-top {
+    height: 200px; /* Ajusta la altura de la imagen según tus necesidades */
+    object-fit: cover; /* Ajusta la imagen para que cubra el contenedor sin distorsionarse */
+}
+
+
+.card-body {
+    flex: 1;
+    overflow: hidden; /* Oculta el desbordamiento de contenido */
+}
+
+.card-text, .list-group-item {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Añade elipsis a textos largos */
+}
+
+
+.modal-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

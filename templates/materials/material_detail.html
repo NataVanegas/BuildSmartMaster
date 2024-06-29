@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ material.name }}</title>
+</head>
+<body>
+    <h1>{{ material.name }}</h1>
+    <p>{{ material.description }}</p>
+    <p>Category: {{ material.category.name }}</p>
+    <p>Price: {{ material.unit_price }}</p>
+    <p>Stock: {{ material.stock_quantity }}</p>
+    
+    <a href="{% url 'materials:material_update' material.pk %}">Edit</a>
+    <a href="{% url 'materials:material_list' %}">Back to List</a>
+</body>
+</html>

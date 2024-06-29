@@ -1,0 +1,27 @@
+<!-- templates/stages/stage_detail.html -->
+{% extends 'base.html' %}
+
+{% block title %}Detalle de Etapa{% endblock %}
+
+{% block content %}
+<h1>{{ stage.name }}</h1>
+<p>{{ stage.description }}</p>
+<h2>Materiales</h2>
+<ul>
+    {% for material in stage.materials.all %}
+    <li>{{ material.name }}</li>
+    {% empty %}
+    <li>No hay materiales asignados.</li>
+    {% endfor %}
+</ul>
+<h2>Herramientas</h2>
+<ul>
+    {% for tool in stage.tools.all %}
+    <li>{{ tool.name }}</li>
+    {% empty %}
+    <li>No hay herramientas asignadas.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'stages:stage_update' stage.pk %}">Editar</a>
+<a href="{% url 'stages:stage_delete' stage.pk %}">Eliminar</a>
+{% endblock %}

@@ -1,0 +1,17 @@
+<!-- templates/stages/stage_list.html -->
+{% extends 'base.html' %}
+
+{% block title %}Lista de Etapas{% endblock %}
+
+{% block content %}
+<h1>Lista de Etapas</h1>
+<ul style="list-style-type: none;">
+    {% for stage in stages %}
+    <li><a href="{% url 'stages:stage_detail' stage.pk %}">{{ stage.name }}</a></li>
+    <li>{{ stage.description }}</li>
+    {% empty %}
+    <li>No hay etapas disponibles.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'stages:stage_create' %}">Crear Nueva Etapa</a>
+{% endblock %}

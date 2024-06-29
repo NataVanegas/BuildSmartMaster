@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-4">
+  <h1>Tools</h1>
+  <a href="{% url 'tools:tool_create' %}">Add New Tool (Page)</a>
+  <a href="{% url 'tools:tool_form_modal' %}" class="btn btn-primary openToolModal" data-url="{% url 'tools:tool_form_modal' %}">Add New Tool (Modal)</a>
+  <ul class="card-tool" style="list-style-type: none;">
+    {% for tool in tools %}
+    <li>
+        <a href="{% url 'tools:tool_detail' tool.pk %}">
+        <div class="card">
+            {% if tool.image %}
+            
+            <img src="{{ tool.image.url }}" class="card-img-top" alt="{{ tool.name }}">
+            {% else %}
+            <img src="{% static 'images/images.jpeg' %}" class="card-img-top" alt="No image available">
+            {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ tool.name }}</h5>
+            <p class="card-text">{{ tool.description }}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">category: {{ tool.category }}</li>
+            <li class="list-group-item"> price: {{ tool.unit_price }}</li>
+            <li class="list-group-item"> Stock: {{ tool.stock_quantity }}</li>
+          </ul>
+          <div class="card-body">
+            <a href="{% url 'tools:tool_update' tool.pk %}">Edit (Page)</a>
+            <a href="{% url 'tools:tool_form_modal' %}" class="btn btn-secondary openToolModal" data-url="{% url 'tools:tool_form_modal' tool.pk %}">Edit (Modal)</a>
+            <form
+              action="{% url 'tools:tool_delete' tool.pk %}"
+              method="post"
+              style="display: inline"
+            >
+              {% csrf_token %}
+              <button type="submit">Delete</button>
+            </form>
+          </div>
+        </div>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="toolModal" tabindex="-1" aria-labelledby="toolModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="toolModalLabel">Tool Form</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- El contenido del formulario se cargará aquí -->
+      </div>
+    
+    </div>
+  </div>
+</div>
+{% endblock %}

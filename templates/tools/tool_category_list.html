@@ -1,0 +1,18 @@
+<!-- templates/tools/tool_category_list.html -->
+
+{% extends 'base.html' %}
+<a href="{% url 'core:index' %}">Link a la página de inicio de 'core'</a>
+{% block title %}Lista de Categorías de Materiales - ConstrucPlan{% endblock %}
+
+{% block content %}
+<h1>Lista de Categorías de Materiales</h1>
+<ul style="list-style-type: none;">
+    {% for category in categories %}
+    <li><a href="{% url 'tools:tool_category_detail' category.pk %}">{{ category.name }}</a></li>
+    <li>{{ category.description }}</li>
+    {% empty %}
+    <li>No hay categorías disponibles.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'tools:tool_category_create' %}">Crear Nueva Categoría</a>
+{% endblock %}

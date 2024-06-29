@@ -1,0 +1,23 @@
+<!-- templates/constructionMaterials/check_stock.html -->
+{% extends 'base.html' %}
+
+{% block title %}Consultar Stock - {{ material.name }}{% endblock %}
+
+{% block content %}
+<h1>Consultar Stock - {{ material.name }}</h1>
+{% if result %}
+  <h2>Resultados de Home Depot</h2>
+ 
+  <ul>
+    {% for item in result %}
+      <li>
+        <strong>{{ item.title }}</strong><br>
+        Precio: {{ item.price }}<br>
+        <img src="{{ item.thumbnails.0.0 }}"  alt="{{ item.title }}">
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No se encontraron resultados.</p>
+{% endif %}
+{% endblock %}

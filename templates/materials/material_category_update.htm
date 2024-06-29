@@ -1,0 +1,14 @@
+<!-- templates/constructionMaterials/material_category_update.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Editar Categoría - {{ category.name }}{% endblock %}
+
+{% block content %}
+<h1>Editar Categoría: {{ category.name }}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar Cambios</button>
+</form>
+{% endblock %}
