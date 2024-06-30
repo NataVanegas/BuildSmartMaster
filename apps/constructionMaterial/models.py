@@ -38,7 +38,4 @@ class Material(models.Model):
     image = models.ImageField(upload_to='materials/', blank=True, null=True)
 
     def __str__(self):
-        """
-        Devuelve una representación en cadena del modelo.
-        """
         return self.name

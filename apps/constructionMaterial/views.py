@@ -91,6 +91,7 @@ def material_detail(request, pk):
         HttpResponse: La página renderizada con los detalles del material.
     """
     material = get_object_or_404(Material, pk=pk)
+    print(material)
     return render(request, 'materials/material_detail.html', {'material': material})
 
 def material_create(request):
@@ -270,21 +271,3 @@ def save_material_form(request, pk=None):
     data['html_form'] = render_to_string('materials/material_form_modal.html', context, request=request)
     return JsonResponse(data)
 
-def check_stock(request, material_id, material_search):
-    """
-    Vista para verificar el stock de un material utilizando la API de Home Depot.
-
-    Args:
-        request: El objeto HttpRequest.
-        material_id: La clave primaria del material.
-        material_search: El término de búsqueda del material.
-
-    Returns:
-        HttpResponse: La página renderizada con los resultados de la verificación de stock.
-    """
-    material = get_object_or_404(Material, id=material_id)
-    if material:
-        result = get_home_depot_product(material.name, API_KEY)
-    else:
-        result = get_home_depot_product(material_search, API_KEY)
-    return render(request, 'materials/check_stock.html', {'material': material, 'result': result})

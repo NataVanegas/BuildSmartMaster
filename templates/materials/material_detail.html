@@ -1,17 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ material.name }}</title>
-</head>
-<body>
-    <h1>{{ material.name }}</h1>
-    <p>{{ material.description }}</p>
-    <p>Category: {{ material.category.name }}</p>
-    <p>Price: {{ material.unit_price }}</p>
-    <p>Stock: {{ material.stock_quantity }}</p>
-    
-    <a href="{% url 'materials:material_update' material.pk %}">Edit</a>
-    <a href="{% url 'materials:material_list' %}">Back to List</a>
-</body>
-</html>
+{% extends "index.html" %}
+{% load static %}
+{% block content %}
+<div class="card">
+    <tr>
+        <td><h5 class="card-title"><strong>{{ material.name }}</strong></h5></td>
+        <td><img src="{{ material.image.url }}" class="card-img-top" alt="{{ material.name }}"></td>
+        <td><p class="card-text">{{ material.description }}</p></td>
+        <td><p class="card-text">Category: {{ material.category.name }}</p></td>
+        <td><p class="card-text">Price: {{ result.unit_price }}</p></td>
+        <td>
+          <a href="{% url 'materials:material_update' material.pk %}" class="btn btn-primary openMaterialModal" data-url="{% url 'materials:material_update' material.pk %}">Edit </a>
+        </td>
+        <td>
+            <a href="{% url 'materials:material_list' %}" class="btn btn-primary openMaterialModal" data-url="{% url 'materials:material_list' %}"> Back to </a>
+        </td>
+    </tr>
+</div>
+
+{% endblock %}
+
+

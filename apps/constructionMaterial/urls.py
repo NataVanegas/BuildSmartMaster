@@ -13,12 +13,9 @@ urlpatterns = [
     path('<int:pk>/delete/', views.material_delete, name='material_delete'),
 
     # Modal URLs
-    path('modal/', views.material_create, name='material_create'),
-    path('modal/<int:pk>/', views.save_material_form, name='material_update'),
+   # path('modal/', views.material_create, name='material_create'),
+   # path('modal/<int:pk>/', views.save_material_form, name='material_update'),
     
-    # API externa URLs
-    path('<int:material_id>/check_stock/', views.check_stock, name='check_stock'),
-
     # MaterialCategory URLs
     path('categories/', views.material_category_list, name='material_category_list'),
     path('categories/<int:pk>/', views.material_category_detail, name='material_category_detail'),

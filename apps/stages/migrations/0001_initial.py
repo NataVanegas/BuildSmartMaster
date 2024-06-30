@@ -9,9 +9,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('constructionMaterial', '0001_initial'),
         ('core', '0001_initial'),
-        ('tools', '0001_initial'),
     ]
 
     operations = [
@@ -21,9 +19,6 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=100)),
                 ('description', models.TextField(blank=True)),
-                ('materials', models.ManyToManyField(to='constructionMaterial.material')),
-                ('tools', models.ManyToManyField(to='tools.tool')),
-                ('work_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='stages', to='core.worktype')),
             ],
         ),
     ]

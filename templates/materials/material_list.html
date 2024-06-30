@@ -1,9 +1,9 @@
-{% extends "base.html" %}
+{% extends "index.html" %}
 {% load static %}
 
 {% block content %}
 <div class="container mt-4">
-  <h1>Materials</h1>
+  <h1>Materials and Tools</h1>
 
   <!-- Formulario de búsqueda de materiales -->
   <form action="{% url 'materials:material_list' %}" method="GET" class="mt-3 mb-3">
@@ -12,10 +12,7 @@
   </form>  
 
   <!-- Enlace para agregar nuevo material -->
- 
-  <button type="button" class="btn btn-primary js-create-material" data-url="{% url 'materials:material_create' %}">Add New Material</button>
- 
-</tr>
+  <a href="{% url 'materials:material_create' %}" class="btn btn-primary openMaterialModal" data-url="{% url 'materials:material_create' %}">Add New Material </a>
   <!-- Lista de materiales locales -->
   <h2>Materials</h2>
   <ul class="card-material" style="list-style-type: none;">
@@ -25,18 +22,18 @@
         {% if material.image %}
           <img src="{{ material.image.url }}" class="card-img-top" alt="{{ material.name }}">
         {% else %}
-          <img src="{% static 'images/default_material_image.jpg' %}" class="card-img-top" alt="No image available">
+          <img src="{% static 'images/images.jpeg' %}" class="card-img-top" alt="No image available">
         {% endif %}
         <div class="card-body">
-          <h5 class="card-title"><strong>{{ material.name }}</strong></h5>
+          <a href="{% url 'materials:material_detail' material.pk %}"> <h5 class="card-title"><strong>{{ material.name }}</strong></h5> </a>
+          
           <p class="card-text">{{ material.description }}</p>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">{{ material.category }}</li>
         </ul>
         <div class="card-body">
-          <a href="{% url 'materials:material_update' material.pk %}" class="btn btn-primary">Edit (Page)</a>
-          <button type="button" class="btn btn-primary js-update-material" data-url="{% url 'materials:material_update' material.pk %}"> Edit (modal)</button>
+          <a href="{% url 'materials:material_update' material.pk %}" class="btn btn-primary openMaterialModal" data-url="{% url 'materials:material_update' material.pk %}">Edit </a>
         </div>
       </div>
     </li>
@@ -59,7 +56,7 @@
                 <td><p class="card-text">Price: {{ result.unit_price }}</p></td>
                 <!-- Other fields -->
                 <td>
-                  <button type="button" class="btn btn-primary js-create-material" data-url="{% url 'materials:material_create' %}">Edit</button>
+                  <a href="{% url 'materials:material_create' %}" class="btn btn-primary openMaterialModal" data-url="{% url 'materials:material_create' %}">Add </a>
                 </td>
             </tr>
             </div>

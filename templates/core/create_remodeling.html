@@ -1,12 +1,25 @@
-{% extends 'base.html' %}
-
+{% extends 'index.html' %}
 {% block title %}Crear Remodelación - BuildSmartMaster{% endblock %}
-
 {% block content %}
 <h1>Crear Remodelación</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Guardar</button>
-</form>
+<div class="box">
+    <form method="post">
+        {% csrf_token %}
+        {{ work_form.as_p }}
+        
+        {% for stage in work_form.fields.stages.queryset %}
+            <div id="stage_{{ stage.id }}">
+                <h3>{{ stage.name }}{{ stage.pk }}0000{{ stage.id }}</h3>
+                <label for="materials_{{ stage.id }}">Materials:</label>
+                <select multiple name="materials_{{ stage.id }}">
+                    {% for material in stage.materials.all %}
+                        <option value="{{ material.id }}">{{ material.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
 {% endblock %}

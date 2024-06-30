@@ -5,5 +5,6 @@ app_name = 'core'
 
 urlpatterns = [
     path('', views.index, name='index'),
-   path('create-remodeling/', views.create_remodeling, name='create_remodeling'),
+    path('create-remodeling/', views.create_remodeling, name='create_remodeling'),
+   
 ]

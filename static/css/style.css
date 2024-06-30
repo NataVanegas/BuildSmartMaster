@@ -74,10 +74,6 @@ nav a {
     text-decoration: none;
 }
 
-nav a:hover {
-    color: #ffc107;
-}
-
 .card-material {
     padding: 1rem;
     display: grid;
@@ -117,4 +113,19 @@ nav a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.card-stage{
+ 
+    width: 18rem;
+    height: 10%;
+    border: 1px solid;
+    border-radius: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+  
+}
+.card-stage:hover {
+    color: #09a162;
 }

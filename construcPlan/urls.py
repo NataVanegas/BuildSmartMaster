@@ -8,6 +8,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.core.urls')),
     path('materials/', include('apps.constructionMaterial.urls')),
-    path('tools/', include('apps.tools.urls')),
-     path('stages/', include('apps.stages.urls', namespace='stages')),
+    path('stages/', include('apps.stages.urls', namespace='stages')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
