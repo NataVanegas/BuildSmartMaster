@@ -4,16 +4,21 @@
 {% block title %}Detalle de Etapa{% endblock %}
 
 {% block content %}
-<h1>{{ stage.name }}</h1>
-<p>{{ stage.description }}</p>
-<h2>Materials and Tools</h2>
-<ul>
-    {% for material in stage.materials.all %}
-    <li>{{ material.name }}</li>
-    {% empty %}
-    <li>No hay materiales asignados.</li>
-    {% endfor %}
-</ul>
-<a href="{% url 'stages:stage_update' stage.pk %}">Editar</a>
-<a href="{% url 'stages:stage_delete' stage.pk %}">Eliminar</a>
+<h1 class="titulo">{{ stage.name }}</h1>
+<h5>{{ stage.description }}</h5>
+<h2 class="card-title">Materials and Tools</h2>
+<div class="formulario">
+    <ul>
+        {% for material in stage.materials.all %}
+        <li>{{ material.name }}</li>
+        {% empty %}
+        <li>No hay materiales asignados.</li>
+        {% endfor %}
+    </ul>
+    <div class="button">
+        <a href="{% url 'stages:stage_update' stage.pk %} " class="btn btn-primary">Edit</a>
+        <a href="{% url 'stages:stage_delete' stage.pk %}" class="btn btn-primary">Delete</a>
+
+    </div>
+</div>
 {% endblock %}

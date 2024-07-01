@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="container mt-4">
-  <h1>Materials and Tools</h1>
+  <h1 class="titulo">Materials and Tools</h1>
 
   <!-- Formulario de búsqueda de materiales -->
   <form action="{% url 'materials:material_list' %}" method="GET" class="mt-3 mb-3">
@@ -14,7 +14,7 @@
   <!-- Enlace para agregar nuevo material -->
   <a href="{% url 'materials:material_create' %}" class="btn btn-primary openMaterialModal" data-url="{% url 'materials:material_create' %}">Add New Material </a>
   <!-- Lista de materiales locales -->
-  <h2>Materials</h2>
+  <h2 class="card-title">Materials</h2>
   <ul class="card-material" style="list-style-type: none;">
     {% for material in materials_local %} 
     <li>
@@ -43,7 +43,7 @@
   <!-- Resultados de búsqueda de API -->
   
   <div class="container">
-    <h2>Search Results</h2>
+    <h2 class="card-title">Search Results</h2>
     {% if materials_search %}
       <ul class="card-material" style="list-style-type: none;">
         {% for result in materials_search %}
@@ -52,7 +52,7 @@
             <img src="{{ result.image.0.4 }}" class="card-img-top" alt="{{ result.name }}">
             <div class="card-body">
               <tr>
-                <td> <h5 class="card-title"><strong>{{ result.name }}</strong></h5></td>
+                <td> <h2 class="card-title" style="text-decoration: none;"><strong>{{ result.name }}</strong></h2></td>
                 <td><p class="card-text">Price: {{ result.unit_price }}</p></td>
                 <!-- Other fields -->
                 <td>
@@ -65,7 +65,7 @@
         {% endfor %}
       </ul>
     {% else %}
-      <p>No search results found.</p>
+      <h5>No search results found.</h5>
     {% endif %}
   </div>
 </div>

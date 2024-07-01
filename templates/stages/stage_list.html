@@ -4,12 +4,12 @@
 {% block title %}List Stages{% endblock %}
 
 {% block content %}
-<h1>List Stages</h1>
+<h1 class="titulo"> Stages </h1>
 
-<div>
+<div class="formulario">
     {% for stage in stages %}
     <ul class="card-stage" >
-        <a href="{% url 'stages:stage_detail' stage.pk %}">{{ stage.name }}</a><br>
+        <a href="{% url 'stages:stage_detail' stage.pk %}"><h2 class="card-title">{{ stage.name }}</h2></a><br>
         {% for material in stage.materials.all %}
             <li>{{ material.name }}</li>
         {% endfor %}
@@ -19,5 +19,5 @@
     {% endfor %}
 </div>
 
-<a href="{% url 'stages:stage_create' %}">Crear Nueva Etapa</a>
+<a href="{% url 'stages:stage_create' %}" class="btn btn-primary">New Stages</a>
 {% endblock %}

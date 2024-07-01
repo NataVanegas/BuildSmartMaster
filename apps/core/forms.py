@@ -12,7 +12,7 @@ class WorkTypeForm(forms.ModelForm):
 
     class Meta:
         model = WorkType
-        fields = ['name', 'description', 'stages']
+        fields = ['name', 'description', 'stage']
 
 class StageForm(forms.ModelForm):
     materials = forms.ModelMultipleChoiceField(
