@@ -5,7 +5,7 @@
 {% block title %}Lista de Categorías - ConstrucPlan{% endblock %}
 
 {% block content %}
-<h1>Categorías</h1>
+<h1 class="titulo">Categories</h1>
 <ul style="list-style-type: none;">
     {% for category in categories %}
     <li><a href="{% url 'materials:material_category_detail' category.pk %}">{{ category.name }}</a></li>
@@ -14,5 +14,5 @@
     <li>No hay categorías disponibles.</li>
     {% endfor %}
 </ul>
-<a href="{% url 'materials:material_category_create' %}">Crear Nueva Categoría</a>
+<a href="{% url 'materials:material_category_create' %}" class="btn btn-primary">Crear Nueva Categoría</a>
 {% endblock %}

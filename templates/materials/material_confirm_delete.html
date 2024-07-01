@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Delete Material</title>
-</head>
+{% extends 'index.html' %}
+
+{% block title %}Delete Material{% endblock %}
+
+{% block content %}
 <body>
-    <h1>Are you sure you want to delete "{{ material.name }}"?</h1>
-    <form method="post">
+    <form method="post" class="formulario">
+        <h1>Are you sure you want to delete "{{ material.name }}"?</h1>
         {% csrf_token %}
-        <button type="submit">Yes, delete</button>
+        <button class="btn btn-primary" type="submit">Yes, delete</button>
     </form>
-    <a href="{% url 'materials:material_list' %}">Cancel</a>
+    <a href="{% url 'materials:material_list' %}" class="btn btn-primary">Cancel</a>
 </body>
-</html>
+{% endblock %}

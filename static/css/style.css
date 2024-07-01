@@ -7,6 +7,7 @@
 
 /* Estilos para el cuerpo del documento */
 body {
+  padding-top: 56px;
   font-family: Arial, sans-serif;
   background-color: #81817c;
   background-size: cover;
@@ -19,8 +20,9 @@ body {
   background: linear-gradient(#9a9a9c91, #bcb8c5e7);
 }
 
+/* Estilos para el título principal */
 .titulo {
- font-family: fantasy;
+  font-family: fantasy;
   font-size: calc(1.375rem + 1.5vw);
   text-align: center;
   padding: 19px;
@@ -29,6 +31,8 @@ body {
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: black;
 }
+
+/* Estilos para los encabezados h5 */
 h5 {
   font-size: calc(0.625rem + 1.5vw);
   text-align: center;
@@ -37,8 +41,10 @@ h5 {
   -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: black;
 }
+
+/* Estilos para los botones primarios */
 .btn-primary {
-  background-color: #2b2929;
+  background-color: #2b2929 !important;
   border: none;
   color: white;
   padding: 6px 10px;
@@ -58,16 +64,7 @@ header {
 header nav {
   background-color: #e41212;
   position: absolute;
- 
-  
 }
-.bg-body-tertiary {
-    --bs-bg-opacity: 1;
-    background-color: #717375 !important;
-    width: 100%;
-    height: 5rem !important;
-}
-
 
 header nav ul {
   list-style-type: none;
@@ -91,14 +88,9 @@ header nav ul li a:hover {
   color: #ffc107;
 }
 
-/* Estilos para el contenido principal (main) */
-main {
-  flex: 1; /* Expande el contenido principal para llenar el espacio disponible */
-}
-
-/* Estilos para el pie de página (footer) */
-footer {
-  background-color: #333;
+/* Estilos para el contenido de la barra de navegación (nav) */
+.navbar {
+  background-color: #0a0a0a;
   color: #fff;
   text-align: center;
   padding: 10px 0;
@@ -108,36 +100,40 @@ footer {
 
 /* Estilos para los enlaces de navegación */
 nav a {
-font-family: fantasy;
+  font-family: fantasy;
   font-size: calc(1.375rem + 1.5vw);
   text-align: center;
   padding: 19px;
   color: #d88811cc;
   text-transform: uppercase;
-  
   -webkit-text-stroke-color: black;
 }
-.navbar navbar-expand-lg bg-body-tertiary{
-    background-color: #0a0a0a;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    width: 100%;
-    flex-shrink: 0; /* Evita que el footer se encoja */
-}
+
+/* Estilos para la marca de la barra de navegación */
 .navbar-brand {
-    font-family: fantasy;
-    font-size: calc(0.575rem + 1.5vw);
-    text-align: center;
-    padding: 19px;
-    color: #d88811cc;
-    text-transform: uppercase;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: black;
+  font-family: fantasy;
+  font-size: calc(0.575rem + 1.5vw);
+  text-align: center;
+  padding: 19px;
+  color: #d88811cc;
+  text-transform: uppercase;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
 }
 
+.bg-body-tertiary {
+  --bs-bg-opacity: 1;
+  background-color: #717375 !important;
+  width: 100%;
+  height: 5rem !important;
+}
 
+/* Estilos para el contenido principal (main) */
+main {
+  flex: 1; /* Expande el contenido principal para llenar el espacio disponible */
+}
 
+/* Estilos para las tarjetas de materiales */
 .card-material {
   padding: 1rem;
   display: grid;
@@ -153,19 +149,17 @@ font-family: fantasy;
   margin: 10px;
   display: flex;
   flex-direction: column;
-  
 }
 
-
-.card-img-top {
-  height: 200px; /* Ajusta la altura de la imagen según tus necesidades */
-  object-fit: cover; /* Ajusta la imagen para que cubra el contenedor sin distorsionarse */
-}
-
-.card-body {
-  flex: 1;
-  overflow: hidden; /* Oculta el desbordamiento de contenido */
- background-color: #d9edf3;
+.card1{
+  background-color: #b8b8b8;
+  border: 0.5px solid ;
+  text-align:center;
+  margin: 5px;
+  border-radius: 2%;
+  display: flex;
+  flex-direction: column;
+  width: 25%;
 }
 
 .card-text,
@@ -175,12 +169,24 @@ font-family: fantasy;
   text-overflow: ellipsis; /* Añade elipsis a textos largos */
 }
 
+.card-detail{
+  border: 1px solid;
+  border-radius: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+  text-align: start;
+}
+/* Estilos para el pie del modal */
 .modal-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+/* Estilos para las tarjetas de etapas */
 .card-stage {
   width: 18rem;
   height: 10%;
@@ -189,49 +195,69 @@ font-family: fantasy;
   margin: 10px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 25px;
+  text-align: start;
+  color: #0a0a0a;
 }
 
-
-.formulario{
-    
-    border: 1px solid;
+/* Estilos para los formularios */
+.formulario {
+  
+    border: 3px solid;
     border-radius: 10px;
     margin: 10px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
     padding: 25px;
     text-align: start;
+    flex-wrap: wrap;
+    align-content: space-around;
+    align-items: stretch;
 }
+.data-total {
+  border: 3px solid;
+  border-radius: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  padding: 25px;
+  text-align: start;
+  flex-wrap: wrap;
+  align-content: space-around;
+  align-items: stretch;
+  justify-content: space-evenly;
+}
+
+/* Estilos para el título de la tarjeta */
 .card-title {
-    align-items: center;
-    text-align: center;
-    font-size: 25px;
-    font-weight: bold;
-    color: #0a0a0a;
-    text-decoration:none;
-    
-}
-.card-stage{
-    width: 18rem;
-    height: 10%;
-    border: 1px solid;
-    border-radius: 10px;
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 25px;
-    text-align: start;
-    color: #0a0a0a;
-}
-.image{
-    width: 100%;
-    height: 25rem;
-    /*object-fit: cover;*/
-    margin: 15px;
+  align-items: center;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  color: #0a0a0a;
+  text-decoration: none;
 }
 
-.visually-hidden{
-    color: #0a0a0a;
+/* Estilos para las imágenes */
+.image {
+  width: 100%;
+  height: 25rem;
+  margin: 15px;
+}
+
+
+/* Estilos para el pie de página (footer) */
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  width: 100%;
+  flex-shrink: 0; /* Evita que el footer se encoja */
+}
+
+footer p {
+  margin: 0;
+  color: #6c757d; /* Color gris para el texto del pie de página */
 }

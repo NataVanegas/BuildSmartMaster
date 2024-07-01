@@ -1,22 +1,40 @@
 {% extends "index.html" %}
+{% block title %}Material Detail{% endblock %}
 {% load static %}
 {% block content %}
-<div class="card">
-    <tr>
-        <td><h5 class="card-title"><strong>{{ material.name }}</strong></h5></td>
-        <td><img src="{{ material.image.url }}" class="card-img-top" alt="{{ material.name }}"></td>
-        <td><p class="card-text">{{ material.description }}</p></td>
-        <td><p class="card-text">Category: {{ material.category.name }}</p></td>
-        <td><p class="card-text">Price: {{ result.unit_price }}</p></td>
-        <td>
-          <a href="{% url 'materials:material_update' material.pk %}" class="btn btn-primary openMaterialModal" data-url="{% url 'materials:material_update' material.pk %}">Edit </a>
-        </td>
-        <td>
-            <a href="{% url 'materials:material_list' %}" class="btn btn-primary openMaterialModal" data-url="{% url 'materials:material_list' %}"> Back to </a>
-        </td>
-    </tr>
+<div class="formulario">
+    <h1 class="titulo">{{ material.name }}</h1>
+        <tr>
+            <td>
+                {% if material.image %}
+                <img src="{{ material.image.url }}" class="card-img-top" alt="{{ material.name }}">
+                {% else %}
+                <img src="{% static 'images/images.jpeg' %}" class="card-img-top" alt="No image available">
+                {% endif %}
+
+            </td>
+            <td>
+                <div class="">
+                    <p class="card-text">{{ material.description }}</p>
+
+                    <p class="card-text">Category: {{ material.category.name }}</p>
+
+                    <p class="card-text">Price: {{ result.unit_price }}</p>
+                </div>
+
+            </td>
+            <td>
+                <div class="button">
+                    <a href="{% url 'materials:material_update' material.pk %}" class="btn btn-primary"
+                        data-url="{% url 'materials:material_update' material.pk %}">Edit </a>
+
+                    <a href="{% url 'materials:material_delete' material.pk %}" class="btn btn-primary"
+                        data-url="{% url 'materials:material_delete' material.pk %}">Delete </a>
+                </div>
+
+            </td>
+        </tr>
 </div>
-
+<a href="{% url 'materials:material_list' %}" class="btn btn-primary" data-url="{% url 'materials:material_list' %}">
+    Back to Materials</a>
 {% endblock %}
-
-

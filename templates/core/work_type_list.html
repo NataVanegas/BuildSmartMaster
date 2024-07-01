@@ -1,0 +1,31 @@
+<!-- templates/core/work_type_list.html -->
+{% extends "index.html" %}
+
+{% block title %}Remodelaciones{% endblock %}
+
+{% block content %}
+<div class="formilario">
+    <h1>Remodelings</h1>
+    <ul>
+        {% for work_type in work_types %}
+            <li>
+                <a href="{% url 'core:work_type_detail' work_type.id %}"><h2>{{ work_type.name }}</h2></a>
+                <p>{{ work_type.description }}</p>
+                <div class="button">
+                    <a href="{% url 'core:work_type_edit' work_type.pk %}" class="btn btn-primary"
+                        data-url="{% url 'core:work_type_edit' work_type.pk %}">Edit </a>
+
+                    <a href="{% url 'core:work_type_delete' work_type.pk %}" class="btn btn-primary"
+                        data-url="{% url 'core:work_type_delete' work_type.id %}">Delete </a>
+                </div>
+                
+           
+                <a href="{% url 'core:work_type_delete' work_type.id %}">Borrar</a>
+            </li>
+            </li>
+        {% empty %}
+            <li>No hay remodelaciones disponibles.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

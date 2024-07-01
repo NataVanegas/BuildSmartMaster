@@ -1,0 +1,28 @@
+<!-- templates/core/work_type_detail.html -->
+{% extends "index.html" %}
+{% block title %}Detalle de la Remodelación{% endblock %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <h1 class="titulo">{{ work_type.name }}</h1>
+    <h5>{{ work_type.description }}</h5>
+    <h2>Stages</h2>
+    <ul>
+        {% for stage in work_type.stages.all %}
+            <li>
+                <a href="{% url 'stages:stage_detail' stage.pk %}"><h2>{{ stage.name }}</h2></a> 
+                <h3>{{ stage.description }}</h3>
+                <h4>Materiales:</h4>
+                <ul>
+                    {% for material in stage.materials.all %}
+                        <li>{{ material.name }} - Price{{ material.unit_price }} - Qty: {{ material.stock_quantity }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+<a href="{% url 'core:work_type_list' %}" class="btn btn-primary" data-url="{% url 'core:work_type_list' %}">
+    Back to Remodeling</a>
+{% endblock %}

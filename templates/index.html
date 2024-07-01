@@ -50,13 +50,7 @@
                 <a class="nav-link" href="{% url 'materials:material_list' %}">Materials</a>
               </li>
               <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
+                <a class="nav-link dropdown-toggle" href="{% url 'stages:stage_list' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Stages
                 </a>
                 <ul class="dropdown-menu">
@@ -64,8 +58,36 @@
                   <li>
                     <a 
                     class="dropdown-item" 
-                    href="{% url 'stages:stage_list' %}"
+                    href="{% url 'stages:stage_detail' stage.pk %}"
                     ><h6>{{ stage.name }}</h6></a>
+                  </li>
+                  {% empty %}
+                  <li>No hay stages disponibles.</li>
+                  {% endfor %}
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="{% url 'materials:material_category_list' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Categories
+                </a>
+                <ul class="dropdown-menu">
+                  {% for category in categories %}
+                  <li>
+                    <a class="dropdown-item" href="{% url 'materials:material_category_detail' category.pk %}" ><h6>{{ category.name }}</h6></a>
+                  </li>
+                  {% empty %}
+                  <li>No hay stages disponibles.</li>
+                  {% endfor %}
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="{% url 'core:work_type_list' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Remodeling
+                </a>
+                <ul class="dropdown-menu">
+                  {% for work_type in work_types %}
+                  <li>
+                    <a class="dropdown-item" href="{% url 'core:work_type_detail' work_type.pk %}" ><h6>{{ work_type.name }}</h6></a>
                   </li>
                   {% empty %}
                   <li>No hay stages disponibles.</li>

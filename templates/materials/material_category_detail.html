@@ -1,14 +1,31 @@
 <!-- materials/material_category_detail.html -->
+{% extends 'index.html' %}
+{% block title %}Category Detail{% endblock %}
+{% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Material Category Detail</title>
-</head>
-<body>
-    <h1>{{ category.name }}</h1>
-    <p>{{ category.description }}</p>
-    <a href="{% url 'materials:material_category_list' %}">Back to Categories</a>
-</body>
-</html>
+{% block content %}
+<div class="card-detail">
+    <h1 class="titulo">Categories</h1>
+    <tr>
+        <td>
+            <h5 class="card-title"><strong>{{ category.name }}</strong></h5>
+        </td>
+
+        <td>
+            <p class="card-text">{{ category.description }}</p>
+        </td>
+        <td>
+            <div class="button">
+                <a href="{% url 'materials:material_category_update' category.pk %}" class="btn btn-primary"
+                    data-url="{% url 'materials:material_category_update' category.pk %}">Edit </a>
+
+                <a href="{% url 'materials:material_category_update' category.pk %}" class="btn btn-primary"
+                    data-url="{% url 'materials:material_category_update' category.pk %}">Delete </a>
+            </div>
+
+        </td>
+    </tr>
+</div>
+<a href="{% url 'materials:material_category_list' %}" class="btn btn-primary"
+    data-url="{% url 'materials:material_category_list' %}"> Back to Categories</a>
+{% endblock %}

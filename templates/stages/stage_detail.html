@@ -1,24 +1,42 @@
 <!-- templates/stages/stage_detail.html -->
-{% extends 'index.html' %}
-
-{% block title %}Detalle de Etapa{% endblock %}
-
+{% extends "index.html" %}
+{% block title %}Stage Detail{% endblock %}
+{% load static %}
 {% block content %}
-<h1 class="titulo">{{ stage.name }}</h1>
-<h5>{{ stage.description }}</h5>
-<h2 class="card-title">Materials and Tools</h2>
-<div class="formulario">
-    <ul>
-        {% for material in stage.materials.all %}
-        <li>{{ material.name }}</li>
-        {% empty %}
-        <li>No hay materiales asignados.</li>
-        {% endfor %}
-    </ul>
-    <div class="button">
-        <a href="{% url 'stages:stage_update' stage.pk %} " class="btn btn-primary">Edit</a>
-        <a href="{% url 'stages:stage_delete' stage.pk %}" class="btn btn-primary">Delete</a>
+<div class="card-detail">
+    <h1 class="titulo">{{ stage.name }}</h1>
+    <tr>
+        <td>
+            {% if material.image %}
+            <img src="{{ stage.image.url }}" class="card-img" alt="{{ stage.name }}">
+            {% else %}
+            <img src="{% static 'images/images.jpeg' %}" class="card-img-top" alt="No image available">
+            {% endif %}
+        </td>
+        <td>
+            <h5 class="card-text">{{ stage.description }}</h5>
+        </td>
+        <td>
+            <div class="formulario">
+                <h5>Materials and Tools</h5>
+                <ul>
+                    {% for material in stage.materials.all %}
+                    <li>{{ material.name }}</li>
+                    {% empty %}
+                    <li>No hay materiales asignados.</li>
+                    {% endfor %}
+                </ul>
+                <div class="button">
+                    <a href="{% url 'stages:stage_update' stage.pk %} " class="btn btn-primary">Edit</a>
+                    <a href="{% url 'stages:stage_delete' stage.pk %}" class="btn btn-primary">Delete</a>
 
-    </div>
+                </div>
+            </div>
+        </td>
+
+
+    </tr>
 </div>
+<a href="{% url 'materials:material_list' %}" class="btn btn-primary" data-url="{% url 'materials:material_list' %}">
+    Back to Stages</a>
 {% endblock %}

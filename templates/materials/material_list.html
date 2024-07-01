@@ -1,6 +1,6 @@
 {% extends "index.html" %}
 {% load static %}
-
+{% block title %}Materials and Tools{% endblock %}
 {% block content %}
 <div class="container mt-4">
   <h1 class="titulo">Materials and Tools</h1>
@@ -33,7 +33,7 @@
           <li class="list-group-item">{{ material.category }}</li>
         </ul>
         <div class="card-body">
-          <a href="{% url 'materials:material_update' material.pk %}" class="btn btn-primary openMaterialModal" data-url="{% url 'materials:material_update' material.pk %}">Edit </a>
+          <a href="{% url 'materials:material_update' material.pk %}" class="btn btn-primary" data-url="{% url 'materials:material_update' material.pk %}">Edit </a>
         </div>
       </div>
     </li>

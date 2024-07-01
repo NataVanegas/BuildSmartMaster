@@ -6,6 +6,7 @@
     <form method="post" class="formulario">
         {% csrf_token %}
         {{ work_form.as_p }}
+        
         {% for stage in stages %}
             <div id="materials_{{ stage.id }}" class="materials-list" style="display: none;">
                 <h3>{{ stage.name }}</h3>

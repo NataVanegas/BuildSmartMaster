@@ -17,7 +17,8 @@ API_KEY = "90c9ea2af52cdedc400ca2da9419b1540f3cde909659c234472160102e24f4ed"  # 
 
 def material_list(request):
     """
-    Vista para listar materiales y buscar materiales tanto localmente como a través de la API de Home Depot.
+    Vista para listar materiales y herramientas
+    busca materiales y herramientas tanto guardadas como a través de la API de Home Depot.
 
     Args:
         request: El objeto HttpRequest.
@@ -45,7 +46,7 @@ def material_list(request):
                 api_data = []
 
             # Limitar a 10 resultados
-            api_data = api_data[:10]
+            api_data = api_data[:6]
            
             materials_search = [
                 {
@@ -81,7 +82,7 @@ def material_list(request):
 
 def material_detail(request, pk):
     """
-    Vista para mostrar el detalle de un material específico.
+    Vista para mostrar el detalle de un material o una herramienta específica.
 
     Args:
         request: El objeto HttpRequest.
@@ -91,18 +92,17 @@ def material_detail(request, pk):
         HttpResponse: La página renderizada con los detalles del material.
     """
     material = get_object_or_404(Material, pk=pk)
-    print(material)
     return render(request, 'materials/material_detail.html', {'material': material})
 
 def material_create(request):
     """
-    Vista para crear un nuevo material.
+    Vista para crear un nuevo material o nueva herramienta.
 
     Args:
         request: El objeto HttpRequest.
 
     Returns:
-        HttpResponse: La página renderizada con el formulario de creación de material.
+        HttpResponse: La página renderizada con el formulario de creación de material o herramienta.
     """
     if request.method == "POST":
         form = MaterialForm(request.POST, request.FILES)
