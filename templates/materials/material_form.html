@@ -1,11 +1,46 @@
 {% extends "index.html" %}
+{% load custom_filters %}
 {% load static %}
+
+{% block title %}{{ view.object.pk|yesno:"Editar,Crear" }} Materials{% endblock %}
 {% block content %}
-    <h1 class="titulo">{% if form.instance.pk %}Edit{% else %}New{% endif %} Material </h1>
+<div class="container mt-5">
+    <h1 class="titulo mb-4">{% if form.instance.pk %}Edit{% else %}New{% endif %} Material</h1>
     <form method="post" enctype="multipart/form-data" class="formulario">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Save</button>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                {{ form.name.label_tag }}
+                {{ form.name }}
+            </div>
+            <div class="form-group col-md-6">
+                {{ form.category.label_tag }}
+                {{ form.category }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                {{ form.unit_price.label_tag }}
+                {{ form.unit_price }}
+            </div>
+            <div class="form-group col-md-6">
+                {{ form.stock_quantity.label_tag }}
+                {{ form.stock_quantity }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form.description.label_tag }}
+            <br>
+            {{ form.description|add_class:"small-textarea" }}
+        </div>
+        <div class="form-group">
+            {{ form.image.label_tag }}
+            <br>
+            {{ form.image }}
+        </div>
+       <button type="submit" class="btn btn-primary">Save</button>
     </form>
-    <a href="{% url 'materials:material_list' %}" class="btn btn-primary">Back to List</a>
+    
+        <a href="{% url 'materials:material_list' %}" class="btn btn-secondary">Back to List</a>
+</div>
 {% endblock %}

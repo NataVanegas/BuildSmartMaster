@@ -1,15 +1,41 @@
 <!-- templates/core/work_type_edit.html -->
-{% extends "index.html" %}
 
-{% block title %}Editar Remodelación{% endblock %}
 
+{% extends 'index.html' %}
+{% load custom_filters %}
+{% block title %}Editar Remodelación - BuildSmartMaster{% endblock %}
 {% block content %}
-<div class="container">
-    <h1>Editar Remodelación</h1>
-    <form method="post">
+<h1 class="titulo">Edit Remodel</h1>
+<div class="container mt-5">
+    <form method="post" enctype="multipart/form-data" class="formulario">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Guardar</button>
+     
+        <div class="form-row">
+            <div class="form-group col-lg-8">
+                {{ form.name.label_tag }}
+                <br>
+                {{ form.name }}
+            </div>
+            <br>
+            <div class="form-group">
+                {{ form.description.label_tag }}
+                <br>
+                {{ form.description|add_class:"small-textarea" }}
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <div style="padding-left: 10rem;">
+                    {{ form.stages.label_tag }}
+                    <br>
+                    {{ form.stages }}
+                </div>
+
+            </div>
+        </div>
+        
     </form>
+    
 </div>
 {% endblock %}

@@ -7,6 +7,7 @@ from .views import (
     StageUpdateView,
     StageDeleteView
 )
+from .views import generate_pdf
 
 app_name = 'stages'
 
@@ -16,4 +17,6 @@ urlpatterns = [
     path('create/', StageCreateView.as_view(), name='stage_create'),
     path('<int:pk>/edit/', StageUpdateView.as_view(), name='stage_update'),
     path('<int:pk>/delete/', StageDeleteView.as_view(), name='stage_delete'),
+
+  path('generate-pdf/<int:stage_id>/', generate_pdf, name='generate_pdf'),
 ]

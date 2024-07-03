@@ -1,13 +1,40 @@
 <!-- templates/stages/stage_form.html -->
 {% extends 'index.html' %}
-
-{% block title %}{{ view.object.pk|yesno:"Editar,Crear" }} Etapa{% endblock %}
+{% load custom_filters %}
+{% block title %}{{ view.object.pk|yesno:"Editar,Crear" }} Stages{% endblock %}
 
 {% block content %}
-<h1 class="titulo">{{ view.object.pk|yesno:"Edit,Create" }} Stages</h1>
-<form method="post" class="formulario">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Save</button>
-</form>
+<div class="container mt-5">
+    <h1 class="titulo">{{ view.object.pk|yesno:"Edit,Create" }} Stages</h1>
+    <form method="post" enctype="multipart/form-data" class="formulario">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-lg-8">
+                {{ form.name.label_tag }}
+                <br>
+                {{ form.name }}
+            </div>
+            <br>
+            <div class="form-group">
+                {{ form.description.label_tag }}
+                <br>
+                {{ form.description|add_class:"small-textarea" }}
+            </div>
+             <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <div style="padding-left: 10rem;">
+                    {{ form.materials.label_tag }}
+                    <br>
+                    {{ form.materials }}
+                </div>
+
+            </div>
+        </div>
+
+       
+    </form>
+</div>
+
 {% endblock %}

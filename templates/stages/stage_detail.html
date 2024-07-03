@@ -1,42 +1,48 @@
 <!-- templates/stages/stage_detail.html -->
 {% extends "index.html" %}
+{% load crispy_forms_tags %}
+{% load custom_filters %} <!-- Cargar el filtro personalizado -->
 {% block title %}Stage Detail{% endblock %}
 {% load static %}
+
 {% block content %}
 <div class="card-detail">
     <h1 class="titulo">{{ stage.name }}</h1>
-    <tr>
-        <td>
-            {% if material.image %}
-            <img src="{{ stage.image.url }}" class="card-img" alt="{{ stage.name }}">
-            {% else %}
-            <img src="{% static 'images/images.jpeg' %}" class="card-img-top" alt="No image available">
-            {% endif %}
-        </td>
-        <td>
-            <h5 class="card-text">{{ stage.description }}</h5>
-        </td>
-        <td>
-            <div class="formulario">
-                <h5>Materials and Tools</h5>
-                <ul>
-                    {% for material in stage.materials.all %}
-                    <li>{{ material.name }}</li>
+    <h5 class="card-text">{{ stage.description }}</h5>
+    <div class="formulario">
+        <h2>Materials and Tools for {{ stage.name }}</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Material</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for material in stage.materials.all %}
+                <tr>
+                    <td scope="row">{{ material.name }}</td>
+                    <td scope="row">{{ material.stock_quantity }}</td>
+                    <td scope="row">${{ material.unit_price }}</td>
+                    <td scope="row">${{ material.stock_quantity|mul:material.unit_price }}</td>
                     {% empty %}
-                    <li>No hay materiales asignados.</li>
-                    {% endfor %}
-                </ul>
-                <div class="button">
-                    <a href="{% url 'stages:stage_update' stage.pk %} " class="btn btn-primary">Edit</a>
-                    <a href="{% url 'stages:stage_delete' stage.pk %}" class="btn btn-primary">Delete</a>
-
-                </div>
-            </div>
-        </td>
-
-
-    </tr>
+                    <td>No hay materiales asignados.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="button">
+        <a href="{% url 'stages:stage_update' stage.pk %} " class="btn btn-primary">Edit</a>
+        <a href="{% url 'stages:stage_delete' stage.pk %}" class="btn btn-primary">Delete</a>
+    </div>
 </div>
-<a href="{% url 'materials:material_list' %}" class="btn btn-primary" data-url="{% url 'materials:material_list' %}">
+<div class="button">
+<a href="{% url 'stages:generate_pdf' stage.id %}" class="btn btn-primary">Generate PDF</a>
+
+<a href="{% url 'stages:stage_list' %}" class="btn btn-primary" data-url="{% url 'stages:stage_list' %}">
     Back to Stages</a>
+</div>
 {% endblock %}

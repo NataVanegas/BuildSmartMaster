@@ -1,24 +1,37 @@
 {% extends 'index.html' %}
+{% load custom_filters %}
 {% block title %}Crear Remodelación - BuildSmartMaster{% endblock %}
 {% block content %}
 <h1 class="titulo">Create Remodel</h1>
-<div class="box">
-    <form method="post" class="formulario">
+<div class="container mt-5">
+    <form method="post" enctype="multipart/form-data" class="formulario">
         {% csrf_token %}
-        {{ work_form.as_p }}
-        
-        {% for stage in stages %}
-            <div id="materials_{{ stage.id }}" class="materials-list" style="display: none;">
-                <h3>{{ stage.name }}</h3>
-                {% for material in materials_by_stage.stage.id %}
-                    <label>
-                        <input type="checkbox" name="materials_{{ stage.id }}" value="{{ material.id }}">
-                        {{ material.name }}
-                    </label>
-                {% endfor %}
+     
+        <div class="form-row">
+            <div class="form-group col-lg-8">
+                {{ work_form.name.label_tag }}
+                <br>
+                {{ work_form.name }}
             </div>
-        {% endfor %}
+            <br>
+            <div class="form-group">
+                {{ work_form.description.label_tag }}
+                <br>
+                {{ work_form.description|add_class:"small-textarea" }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <div style="padding-left: 10rem;">
+                    {{ work_form.stages.label_tag }}
+                    <br>
+                    {{ work_form.stages }}
+                </div>
+
+            </div>
+        </div>
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
+    
 </div>
 {% endblock %}

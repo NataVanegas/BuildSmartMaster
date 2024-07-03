@@ -203,7 +203,6 @@ main {
 
 /* Estilos para los formularios */
 .formulario {
-  
     border: 3px solid;
     border-radius: 10px;
     margin: 10px;
@@ -215,6 +214,12 @@ main {
     align-content: space-around;
     align-items: stretch;
 }
+.small-textarea {
+  width: 60%; /* Asegura que el textarea ocupe todo el ancho disponible */
+  height: 40px; /* Ajusta la altura según sea necesario */
+  resize: vertical; /* Permite que el usuario cambie el tamaño verticalmente si lo desea */
+}
+
 .data-total {
   border: 3px solid;
   border-radius: 10px;

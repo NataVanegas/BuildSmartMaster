@@ -61,6 +61,8 @@
     </div>
     {% empty %}
     <li>No hay etapas disponibles.</li>
+    <li><a href="{% url 'stages:stage_create' %}" class="btn btn-primary">Create New Stages</a></li>
+
     {% endfor %}
   </div>
   {% empty %}
