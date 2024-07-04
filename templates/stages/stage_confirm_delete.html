@@ -6,9 +6,9 @@
 {% block content %}
 <h1>Eliminar Etapa</h1>
 <p>¿Estás seguro que deseas eliminar "{{ stage.name }}"?</p>
-<form method="post">
+<form method="post" class="formulario">
     {% csrf_token %}
-    <button type="submit">Sí, eliminar</button>
+    <button class="btn btn-primary" type="submit">Sí, eliminar</button>
     <a href="{% url 'stages:stage_list' %}">Cancelar</a>
 </form>
 {% endblock %}
