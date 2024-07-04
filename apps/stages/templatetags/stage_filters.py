@@ -1,4 +1,4 @@
-# templatetags/custom_filters.py
+# templatetags/stage_filters.py
 
 from django import template
 
