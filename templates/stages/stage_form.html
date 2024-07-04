@@ -1,6 +1,6 @@
 <!-- templates/stages/stage_form.html -->
 {% extends 'index.html' %}
-{% load custom_filters %}
+
 {% block title %}{{ view.object.pk|yesno:"Editar,Crear" }} Stages{% endblock %}
 
 {% block content %}
@@ -18,7 +18,7 @@
             <div class="form-group">
                 {{ form.description.label_tag }}
                 <br>
-                {{ form.description|add_class:"small-textarea" }}
+                {{ form.description }}
             </div>
              <button type="submit" class="btn btn-primary">Save</button>
         </div>

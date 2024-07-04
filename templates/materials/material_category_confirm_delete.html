@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block title %}Delete Category{% endblock %}
+
+{% block content %}
+<body>
+    <form method="post" class="formulario">
+        <h1>Are you sure you want to delete "{{ category.name }}"?</h1>
+        {% csrf_token %}
+        <button class="btn btn-primary" type="submit">Yes, delete</button>
+    </form>
+    <a href="{% url 'materials:material_category_list' %}" class="btn btn-primary">Cancel</a>
+</body>
+{% endblock %}

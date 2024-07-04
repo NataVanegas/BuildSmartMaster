@@ -1,8 +1,6 @@
 <!-- templates/core/work_type_edit.html -->
-
-
 {% extends 'index.html' %}
-{% load custom_filters %}
+
 {% block title %}Editar Remodelación - BuildSmartMaster{% endblock %}
 {% block content %}
 <h1 class="titulo">Edit Remodel</h1>
@@ -20,9 +18,9 @@
             <div class="form-group">
                 {{ form.description.label_tag }}
                 <br>
-                {{ form.description|add_class:"small-textarea" }}
+                {{ form.description }}
             </div>
-            <button type="submit" class="btn btn-primary">Save</button>
+            
         </div>
         <div class="form-row">
             <div class="form-group">
@@ -30,6 +28,8 @@
                     {{ form.stages.label_tag }}
                     <br>
                     {{ form.stages }}
+                    <br>
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </div>
 
             </div>

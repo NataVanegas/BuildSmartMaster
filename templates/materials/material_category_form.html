@@ -1,17 +1,25 @@
 <!-- materials/material_category_form.html -->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create Material Category</title>
-</head>
-<body>
-    <h1>Create Material Category</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save</button>
-    </form>
-</body>
-</html>
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}{{ view.object.pk|yesno:"Editar,Crear" }} Category{% endblock %}
+
+{% block content %}
+<h1>Create New Category</h1>
+<form method="post" class="formulario">
+    <div class="form-row">
+        <div class="form-group">
+            {{ form.name.label_tag }}
+            <br>
+            {{ form.name }}
+        </div>
+        <br>
+        <div class="form-group col-lg-8">
+            {{ form.description.label_tag }}
+            <br>
+            {{ form.description }}
+        </div>
+         <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</form>
+{% endblock %}
