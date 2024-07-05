@@ -81,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'construcPlan',  # El nombre de la base de datos que creaste
         'USER': 'root',          # El usuario de MySQL (probablemente 'root')
-        'PASSWORD': 'root',  # La contraseña que configuraste para el usuario root
+        'PASSWORD': '',  # La contraseña que configuraste para el usuario root
         'HOST': 'localhost',     # Por lo general, 'localhost'
         'PORT': '3306',          # El puerto de MySQL (por lo general, 3306)
         'OPTIONS': {
@@ -145,3 +145,6 @@ MEDIA_ROOT = BASE_DIR / "media"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF_COOKIE_SECURE = False  # True si estás en producción y usando HTTPS
+CSRF_USE_SESSIONS = False
